@@ -13,3 +13,9 @@ for (let i = 0; i < nums.length; i++) {
     }
     console.log(nums[i]);
 }
+if ({}) {
+    console.log('I am not');
+}
+else {
+    console.log('I am')
+}
