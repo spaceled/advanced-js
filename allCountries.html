@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show All Countries Information</title>
+</head>
+<body>
+    <h1>Show All countries information</h1>
+    <script>
+        // displayInformation(info)
+        function createNode(element) {
+            const createElement = document.createElement(element);
+            return createElement;
+        }
+        function append(parent, items) {
+            const appendChildItems = parent.appendChild(items);
+            return appendChildItems;
+        }
+        fetch('https://restcountries.eu/rest/v2/all')
+        .then(response => response.json())
+        .then(data => {
+            for (let i = 0; i < data.length; i++) {
+                const name = data[i];
+                let divBlock = createNode('div')
+                let header1 = createNode('h1');
+                let paragraph = createNode('p');
+                let paragraph2 = createNode('p');
+                let flag = createNode('img');
+
+                header1.innerHTML = `${name.name}`;
+                paragraph.innerHTML = `${name.capital}`;
+                paragraph2.innerHTML = `${name.region}`;
+                flag.src = name.flag;
+                console.log(divBlock)
+
+                append(divBlock, header1);
+                append(divBlock, paragraph);
+                append(divBlock, paragraph2);
+                append(divBlock, flag);
+            }
+        });
+        
+        function nowPostToServer(postInfo) {
+            fetch('https://restcountries.eu/rest/v2/all', {
+                method: 'POST',
+                body: JSON.stringify(postInfo),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            })
+                .then(response => response.json())
+                .then(data => console.log(data));
+        }
+    </script>
+</body>
+</html>

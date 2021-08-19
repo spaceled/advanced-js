@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This</title>
+</head>
+<body>
+    <h1>This is not confused anymore</h1>
+    <script>
+        fetch('https://restcountries.eu/rest/v2/all')
+        .then(response => response.json())
+        .then(data => {
+            for (let i = 0; i < data.length; i++) {
+                const name = data[i];
+                console.log(name);
+            }
+        })
+        // Need to watch again: https://web.programming-hero.com/course/video/restart2-25-7-how-to-understand-the-this-keyword-
+    </script>
+</body>
+</html>
